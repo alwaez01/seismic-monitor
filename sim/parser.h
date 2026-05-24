@@ -9,11 +9,11 @@
 
 typedef struct
 {
-     int    n;
-     double f;
-     double b;
+     int    sensor_count;
+     double frequency;
+     double burst_prob;
      int    burst_size;
-     int    seed;
-} SimConfig;
+     int    random_seed;
+} SIM_CONFIG;
 
 #endif
