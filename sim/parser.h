@@ -16,4 +16,6 @@ typedef struct
      int    random_seed;
 } SIM_CONFIG;
 
+int parse_args(SIM_CONFIG *cfg, int argc, char **argv);
+
 #endif
