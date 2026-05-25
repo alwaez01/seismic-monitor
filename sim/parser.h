@@ -7,6 +7,10 @@
 #define DEFAULT_BURST_SIZE    500
 #define DEFAULT_RANDOM_SEED   0
 
+#define PARSER_OK                0
+#define PARSER_ERR_UNKNOWN_FLAG -1
+#define PARSER_ERR_OUT_OF_RANGE -2
+
 typedef struct
 {
      int    sensor_count;
