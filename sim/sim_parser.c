@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "parser.h"
+#include "sim_parser.h"
 
 int parse_args(SIM_CONFIG *cfg, int argc, char **argv)
 {

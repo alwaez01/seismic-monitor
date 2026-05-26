@@ -1,7 +1,7 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include "parser.h"
+#include "sim_parser.h"
 
 #define MIN_INTENSITY -1000
 #define MAX_INTENSITY  1000

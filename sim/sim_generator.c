@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "generator.h"
+#include "sim_generator.h"
 
 static void generator_emit(GENERATOR *gen)
 {

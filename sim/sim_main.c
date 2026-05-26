@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "parser.h"
-#include "generator.h"
+#include "sim_parser.h"
+#include "sim_generator.h"
 
 int main(int argc, char **argv)
 {

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "parser.h"
+#include "mon_parser.h"
 
 int parse_args(MON_CONFIG *cfg, int argc, char **argv)
 {
