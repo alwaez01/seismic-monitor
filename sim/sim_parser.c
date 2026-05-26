@@ -20,22 +20,30 @@ int parse_args(SIM_CONFIG *cfg, int argc, char **argv)
                case 'n':
                     cfg->sensor_count = atoi(optarg);
                     if (cfg->sensor_count <= 0)
+                    {
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'f':
                     cfg->frequency = atof(optarg);
                     if (cfg->frequency <= 0.0)
+                    {
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'b':
                     cfg->burst_prob = atof(optarg);
                     if (cfg->burst_prob < 0.0 || cfg->burst_prob > 1.0)
+                    {     
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'B':
                     cfg->burst_size = atoi(optarg);
                     if (cfg->burst_size <= 0)
+                    {     
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 's':
                     cfg->random_seed = atoi(optarg);

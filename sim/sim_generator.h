@@ -1,5 +1,5 @@
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#ifndef SIM_GENERATOR_H
+#define SIM_GENERATOR_H
 
 #include "sim_parser.h"
 

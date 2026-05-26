@@ -20,22 +20,30 @@ int parse_args(MON_CONFIG *cfg, int argc, char **argv)
                case 'a':
                     cfg->window_sec = atoi(optarg);
                     if (cfg->window_sec <= 0)
+                    {
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'l':
                     cfg->lag_ms = atoi(optarg);
                     if (cfg->lag_ms <= 0)
+                    {
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'n':
                     cfg->sensor_count = atoi(optarg);
                     if (cfg->sensor_count <= 0)
+                    {     
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'p':
                     cfg->precision = atoi(optarg);
                     if (cfg->precision < 0)
+                    {     
                          return PARSER_ERR_OUT_OF_RANGE;
+                    }
                     break;
                case 'z':
                     cfg->show_empty = 1;
