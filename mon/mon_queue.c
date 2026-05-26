@@ -2,6 +2,29 @@
 
 #include "mon_queue.h"
 
+MEASUREMENT *measurement_create(int sensor_id, int intensity, long long timestamp_ms)
+{
+     MEASUREMENT *m;
+
+     m = (MEASUREMENT*)malloc(sizeof(MEASUREMENT));
+     if (m == NULL)
+     {
+          return NULL;
+     }
+
+     m->sensor_id    = sensor_id;
+     m->intensity    = intensity;
+     m->timestamp_ms = timestamp_ms;
+     m->next         = NULL;
+
+     return m;
+}
+
+void measurement_destroy(MEASUREMENT *m)
+{
+     free(m);
+}
+
 QUEUE *queue_create(void)
 {
      QUEUE *q;

@@ -16,6 +16,9 @@ typedef struct
      int          size;
 } QUEUE;
 
+MEASUREMENT *measurement_create(int sensor_id, int intensity, long long timestamp_ms);
+void         measurement_destroy(MEASUREMENT *m);
+
 QUEUE *queue_create(void);
 void   queue_destroy(QUEUE *q);
 
