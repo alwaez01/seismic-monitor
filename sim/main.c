@@ -2,11 +2,13 @@
 #include <stdlib.h>
 
 #include "parser.h"
+#include "generator.h"
 
 int main(int argc, char **argv)
 {
      SIM_CONFIG cfg;
      int        result;
+     GENERATOR *gen;
 
      result = parse_args(&cfg, argc, argv);
 
@@ -16,11 +18,13 @@ int main(int argc, char **argv)
           return -1;
      }
 
-     printf("sensor_count: %d\n",   cfg.sensor_count);
-     printf("frequency: %lf\n", cfg.frequency);
-     printf("burst_prob: %lf\n", cfg.burst_prob);
-     printf("burst_size: %d\n",   cfg.burst_size);
-     printf("random_seed: %d\n",   cfg.random_seed);
+     gen = generator_create(&cfg);
+     while (1)
+     {
+          generator_tick(gen);
+     }
+
+     generator_destroy(gen);
 
      return 0;
 }
