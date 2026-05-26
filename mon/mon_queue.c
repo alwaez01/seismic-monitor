@@ -57,3 +57,51 @@ void queue_destroy(QUEUE *q)
 
      free(q);
 }
+
+int queue_push(QUEUE *q, MEASUREMENT *m)
+{
+     if (m == NULL)
+     {
+          return QUEUE_ERR_MEM;
+     }
+
+     m->next = NULL;
+
+     if (q->tail == NULL)
+     {
+          q->head = m;
+          q->tail = m;
+     }
+     else
+     {
+          q->tail->next = m;
+          q->tail       = m;
+     }
+
+     q->size++;
+
+     return QUEUE_OK;
+}
+
+int queue_pop_head(QUEUE *q)
+{
+     MEASUREMENT *expired;
+
+     if (q->head == NULL)
+     {
+          return QUEUE_ERR_EMPTY;
+     }
+
+     expired = q->head;
+     q->head = q->head->next;
+
+     if (q->head == NULL)
+     {
+          q->tail = NULL;
+     }
+
+     measurement_destroy(expired);
+     q->size--;
+
+     return QUEUE_OK;
+}
