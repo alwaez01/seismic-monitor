@@ -3,6 +3,9 @@
 
 #include "parser.h"
 
+#define MIN_INTENSITY -1000
+#define MAX_INTENSITY  1000
+
 typedef struct
 {
      int    sensor_count;
@@ -13,5 +16,6 @@ typedef struct
 
 GENERATOR *generator_create(SIM_CONFIG *cfg);
 void       generator_destroy(GENERATOR *gen);
+void       generator_tick(GENERATOR *gen);
 
 #endif
