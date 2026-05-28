@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <math.h>
 
 #include "mon_stats.h"
 
