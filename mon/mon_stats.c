@@ -32,9 +32,35 @@ STATS *stats_create(int sensor_count)
      return s;
 }
 
-
 void stats_destroy(STATS *s)
 {
      free(s->sensors);
      free(s);
+}
+
+void stats_add(STATS *s, int sensor_id, int value)
+{
+     s->sensors[sensor_id].count  += 1;
+     s->sensors[sensor_id].sum    += value;
+     s->sensors[sensor_id].sum_sq += (double)value * value;
+}
+
+void stats_remove(STATS *s, int sensor_id, int value)
+{
+     s->sensors[sensor_id].count  -= 1;
+     s->sensors[sensor_id].sum    -= value;
+     s->sensors[sensor_id].sum_sq -= (double)value * value;
+}
+
+void stats_mean(STATS *s, int sensor_id, double *result)
+{
+     *result = s->sensors[sensor_id].sum / s->sensors[sensor_id].count;
+}
+
+void stats_stddev(STATS *s, int sensor_id, double *result)
+{
+     double mean;
+
+     mean    = s->sensors[sensor_id].sum / s->sensors[sensor_id].count;
+     *result = sqrt(s->sensors[sensor_id].sum_sq / s->sensors[sensor_id].count - mean * mean);
 }
