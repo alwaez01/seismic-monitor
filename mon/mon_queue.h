@@ -1,9 +1,10 @@
 #ifndef MON_QUEUE_H
 #define MON_QUEUE_H
 
-#define QUEUE_OK         0
-#define QUEUE_ERR_MEM   -1
-#define QUEUE_ERR_EMPTY -2
+#define QUEUE_OK          0
+#define QUEUE_ERR_MEM    -1
+#define QUEUE_ERR_EMPTY  -2
+#define INPUT_BUFFER_SIZE 128
 
 typedef struct MEASUREMENT
 {
@@ -22,6 +23,7 @@ typedef struct
 
 MEASUREMENT *measurement_create(int sensor_id, int intensity, long long timestamp_ms);
 void         measurement_destroy(MEASUREMENT *m);
+MEASUREMENT *input_read(void);
 
 QUEUE *queue_create(void);
 void   queue_destroy(QUEUE *q);

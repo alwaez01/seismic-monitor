@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "mon_queue.h"
@@ -104,4 +105,26 @@ int queue_pop_head(QUEUE *q)
      q->size--;
 
      return QUEUE_OK;
+}
+
+MEASUREMENT *input_read(void)
+{
+     char      buf[INPUT_BUFFER_SIZE];
+     int       sensor_id;
+     int       value;
+     long long timestamp_ms;
+     int       parsed;
+
+     if (fgets(buf, INPUT_BUFFER_SIZE, stdin) == NULL)
+     {
+          return NULL;
+     }
+
+     parsed = sscanf(buf, "%d %d %lld", &sensor_id, &value, &timestamp_ms);
+     if (parsed != 3)
+     {
+          return NULL;
+     }
+
+     return measurement_create(sensor_id, value, timestamp_ms);
 }
