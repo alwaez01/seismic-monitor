@@ -34,9 +34,9 @@ void display_render(STATS *s, MON_CONFIG *cfg)
 
           stats_mean(s, i, &mean);
           stats_stddev(s, i, &stddev);
-          printf(" %4d | %5d | %*.*f | %*.*f\n",
+          printf(" %4d | %5d | %10.*f | %10.*f\n",
                i, s->sensors[i].count,
-               cfg->precision + 5, cfg->precision, mean,
-               cfg->precision + 5, cfg->precision, stddev);
+               cfg->precision, mean,
+               cfg->precision, stddev);
      }
 }
