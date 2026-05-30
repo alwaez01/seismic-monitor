@@ -16,6 +16,7 @@ void display_render(STATS *s, MON_CONFIG *cfg)
      t   = localtime(&now);
      strftime(time_buf, sizeof(time_buf), "%H:%M:%S", t);
 
+     printf("\033[2J\033[H");
      printf("=== Seismic Monitor | window: %ds | lag: %dms | %s ===\n\n",
           cfg->window_sec, cfg->lag_ms, time_buf);
      printf(" %4s | %5s | %10s | %10s\n", "ID", "COUNT", "MEAN", "STD DEV");
