@@ -94,6 +94,12 @@ int main(int argc, char **argv)
                     break;
                }
 
+               if (m->sensor_id < 0 || m->sensor_id >= cfg.sensor_count)
+               {
+                    measurement_destroy(m);
+                    continue;
+               }
+
                stats_add(s, m->sensor_id, m->intensity);
                queue_push(q, m);
           }
