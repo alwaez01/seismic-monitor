@@ -60,6 +60,12 @@ int main(int argc, char **argv)
           now_ms     = get_time_ms();
           elapsed_ms = now_ms - last_render_ms;
 
+          while (q->head != NULL && now_ms - q->head->timestamp_ms > window_ms)
+          {
+               stats_remove(s, q->head->sensor_id, q->head->intensity);
+               queue_pop_head(q);
+          }
+
           if (elapsed_ms >= cfg.lag_ms)
           {
                display_render(s, &cfg);
@@ -90,13 +96,6 @@ int main(int argc, char **argv)
 
                stats_add(s, m->sensor_id, m->intensity);
                queue_push(q, m);
-
-               now_ms = get_time_ms();
-               while (q->head != NULL && now_ms - q->head->timestamp_ms > window_ms)
-               {
-                    stats_remove(s, q->head->sensor_id, q->head->intensity);
-                    queue_pop_head(q);
-               }
           }
      }
 
