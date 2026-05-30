@@ -34,14 +34,14 @@ int main(int argc, char **argv)
      if (result != PARSER_OK)
      {
           printf("error parsing arguments: %d\n", result);
-          return 1;
+          return EXIT_FAILURE;
      }
 
      q = queue_create();
      if (q == NULL)
      {
           printf("failed to create queue\n");
-          return 1;
+          return EXIT_FAILURE;
      }
 
      s = stats_create(cfg.sensor_count);
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
      {
           printf("failed to create stats\n");
           queue_destroy(q);
-          return 1;
+          return EXIT_FAILURE;
      }
 
      window_ms      = (long long)cfg.window_sec * 1000LL;
@@ -110,5 +110,5 @@ int main(int argc, char **argv)
      stats_destroy(s);
      queue_destroy(q);
 
-     return 0;
+     return EXIT_SUCCESS;
 }
