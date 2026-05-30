@@ -53,15 +53,29 @@ void stats_remove(STATS *s, int sensor_id, int value)
      s->sensors[sensor_id].sum_sq -= (double)value * value;
 }
 
-void stats_mean(STATS *s, int sensor_id, double *result)
+int stats_mean(STATS *s, int sensor_id, double *result)
 {
+     if (s->sensors[sensor_id].count == 0)
+     {
+          return STATS_ERR_NO_DATA;
+     }
+
      *result = s->sensors[sensor_id].sum / s->sensors[sensor_id].count;
+
+     return STATS_OK;
 }
 
-void stats_stddev(STATS *s, int sensor_id, double *result)
+int stats_stddev(STATS *s, int sensor_id, double *result)
 {
      double mean;
 
+     if (s->sensors[sensor_id].count == 0)
+     {
+          return STATS_ERR_NO_DATA;
+     }
+
      mean    = s->sensors[sensor_id].sum / s->sensors[sensor_id].count;
      *result = sqrt(s->sensors[sensor_id].sum_sq / s->sensors[sensor_id].count - mean * mean);
+
+     return STATS_OK;
 }

@@ -1,6 +1,9 @@
 #ifndef MON_STATS_H
 #define MON_STATS_H
 
+#define STATS_OK           0
+#define STATS_ERR_NO_DATA -1
+
 typedef struct
 {
      int    count;
@@ -19,7 +22,7 @@ void   stats_destroy(STATS *s);
 
 void   stats_add(STATS *s, int sensor_id, int value);
 void   stats_remove(STATS *s, int sensor_id, int value);
-void   stats_mean(STATS *s, int sensor_id, double *result);
-void   stats_stddev(STATS *s, int sensor_id, double *result);
+int    stats_mean(STATS *s, int sensor_id, double *result);
+int    stats_stddev(STATS *s, int sensor_id, double *result);
 
 #endif
