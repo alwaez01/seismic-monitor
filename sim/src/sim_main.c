@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
      if (result != PARSER_OK)
      {
-          printf("error parsing arguments: %d\n", result);
+          fprintf(stderr, "error parsing arguments: %d\n", result);
           return EXIT_FAILURE;
      }
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
      if (gen == NULL)
      {
-          printf("failed to create generator\n");
+          fprintf(stderr, "failed to create generator\n");
           return EXIT_FAILURE;
      }
 

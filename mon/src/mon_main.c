@@ -33,21 +33,21 @@ int main(int argc, char **argv)
      result = parse_args(&cfg, argc, argv);
      if (result != PARSER_OK)
      {
-          printf("error parsing arguments: %d\n", result);
+          fprintf(stderr, "error parsing arguments: %d\n", result);
           return EXIT_FAILURE;
      }
 
      q = queue_create();
      if (q == NULL)
      {
-          printf("failed to create queue\n");
+          fprintf(stderr, "failed to create queue\n");
           return EXIT_FAILURE;
      }
 
      s = stats_create(cfg.sensor_count);
      if (s == NULL)
      {
-          printf("failed to create stats\n");
+          fprintf(stderr, "failed to create stats\n");
           queue_destroy(q);
           return EXIT_FAILURE;
      }
