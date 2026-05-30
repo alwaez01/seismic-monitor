@@ -19,6 +19,13 @@ int main(int argc, char **argv)
      }
 
      gen = generator_create(&cfg);
+
+     if (gen == NULL)
+     {
+          printf("failed to create generator\n");
+          return -1;
+     }
+
      while (1)
      {
           generator_tick(gen);
